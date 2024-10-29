@@ -27,4 +27,7 @@ public class UserController {
 		return new ResponseEntity<UserResDTO>(userResData, HttpStatus.OK);
 	}
 
+	public void login() {
+		
+	}
 }
