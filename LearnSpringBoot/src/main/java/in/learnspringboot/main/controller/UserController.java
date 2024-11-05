@@ -32,20 +32,22 @@ public class UserController {
 	}
 
 	@PostMapping("/userlogin")
-	public ResponseEntity<UserResDTO> userlogin(@RequestParam String uniqueNameString, @RequestParam String passwordString) throws Exception{
+	public ResponseEntity<UserResDTO> userlogin(@RequestParam String uniqueNameString,
+			@RequestParam String passwordString) throws Exception {
 		UserResDTO userResData = userService.loginUser(uniqueNameString, passwordString);
 		return new ResponseEntity<UserResDTO>(userResData, HttpStatus.OK);
-		}
-	
-	@PutMapping("/updateuser/{uniqueNameString}")
-	public ResponseEntity<UserResDTO> updateUser(@PathVariable String uniqueNameString, @RequestBody UserReqDTO userReqDTO ) throws Exception{
-		UserResDTO userResData = userService.updateUser(uniqueNameString, userReqDTO);
-		return new ResponseEntity<UserResDTO> (userResData, HttpStatus.OK);
 	}
-	
+
+	@PutMapping("/updateuser/{uniqueNameString}")
+	public ResponseEntity<UserResDTO> updateUser(@PathVariable String uniqueNameString,
+			@RequestBody UserReqDTO userReqDTO) throws Exception {
+		UserResDTO userResData = userService.updateUser(uniqueNameString, userReqDTO);
+		return new ResponseEntity<UserResDTO>(userResData, HttpStatus.OK);
+	}
+
 	@DeleteMapping("/delete/{uniqueName}")
-	public ResponseEntity<Integer> deleteProfile(@PathVariable String uniqueName) throws Exception{
-		Integer deleted = userService. deleteUser(uniqueName);
+	public ResponseEntity<Integer> deleteProfile(@PathVariable String uniqueName) throws Exception {
+		Integer deleted = userService.deleteUser(uniqueName);
 		return new ResponseEntity<Integer>(deleted, HttpStatus.OK);
 	}
 

@@ -1,14 +1,18 @@
 package in.learnspringboot.main.Entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data
+@Data 
 @Table
 @Entity
 public class Creater {
@@ -22,5 +26,8 @@ public class Creater {
 	private Long phoneNoLong;
 	private String nicheOfCreaterString;
 	private String passwordString;
+	
+	@OneToMany(mappedBy = "creater", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Blogs> blogs;
 
 }
