@@ -2,6 +2,8 @@ package in.learnspringboot.main.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +30,7 @@ public class Creater {
 	private String passwordString;
 	
 	@OneToMany(mappedBy = "creater", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
 	private List<Blogs> blogs;
 
 }
